@@ -1,0 +1,19 @@
+<h2>Upload an image</h2>
+<form class="upload">
+    <div class="config-input">
+        <label>Choose file:</label>
+        <input id="fileInput" type='file' accept='image/png, image/jpeg' (change)="onSelectFile($event.target.files)">
+        <span class="error">{{validationFileInput}}</span>
+    </div>
+    <div class="config-input">
+        <label>File Description:<br /> </label>
+        <input type="text" [(ngModel)]="description" name="descriptionUpload">
+        <span class="error">{{validationDescription}}</span>
+    </div>
+    
+    <p class="error">{{errors}}</p>
+    <p class="success">{{messageOk}}</p>
+        
+    <button (click)="submitForm()">Submit image</button>
+
+</form>

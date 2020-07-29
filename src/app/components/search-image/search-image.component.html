@@ -1,0 +1,31 @@
+<h2>Search for an image</h2>
+<form>
+    <div class="config-input">
+        <label>File Description:</label>
+        <input type="text" [(ngModel)]="description" name="descriptionField">
+    </div>
+
+    <div class="config-input">
+        <label>Image Type: </label>
+        <select [(ngModel)]="imageType" name="typeField">
+            <option selected></option>
+            <option>JPEG</option>
+            <option>PNG</option>                                             
+        </select> 
+    </div>
+
+    <div class="config-input">
+        <label>Image Size: </label>
+        <input  id="imagesize" type="number" [(ngModel)]="imageSize" name="sizeField"> 
+    </div>
+
+    <button (click)="submitSearch()">Submit search</button>
+</form>
+<app-infinite-scroll (scrolled)="onScroll()">
+    <p class="error">{{errors}}</p>
+    <div *ngFor="let image of imageList" class="items">
+        <p>File description: {{ image.description }}</p>
+        <p>File size: {{ image.fileSizeKb }} kb</p>
+        <p>File type: {{ image.fileType }}</p>
+    </div>
+</app-infinite-scroll>
